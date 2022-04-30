@@ -3,13 +3,13 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package libreria;
+package ventabook;
 
 /**
  *
  * @author marce
  */
-public class Libro {
+public class Libro_1 {
     
     private String nombre;
     private String autor;
@@ -17,7 +17,7 @@ public class Libro {
     private int paginas;
     private int precio;
 
-    public Libro() {
+    public Libro_1() {
         this.nombre = "";
         this.autor = "";
         this.editorial = "";
@@ -25,7 +25,7 @@ public class Libro {
         this.precio = 0;
     }
     
-    public Libro(String nombre, String autor, String editorial, int paginas, int precio){
+    public Libro_1(String nombre, String autor, String editorial, int paginas, int precio){
         this.nombre = nombre;
         this.autor = autor;
         this.editorial = editorial;

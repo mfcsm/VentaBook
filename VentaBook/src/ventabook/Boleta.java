@@ -3,7 +3,8 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package libreria;
+package ventabook;
+import java.util.Date;
 
 /**
  *
@@ -11,7 +12,7 @@ package libreria;
  */
 public class Boleta {
     
-    String libro;
-    int precio;
-    Date fecha; 
+    private String libro;
+    private int precio;
+    private Date fecha; 
 }
