@@ -17,4 +17,23 @@ public class VentaBook {
         // TODO code application logic here
     }
     
+    private String libro;
+
+    public VentaBook() {
+        this.libro = "";  
+    }
+    
+    public VentaBook(String libro) {
+        this.libro = libro;  
+    }
+
+    public String getLibro() {
+        return libro;
+    }
+
+    public void setLibro(String libro) {
+        this.libro = libro;
+    }
+    
+    
 }
