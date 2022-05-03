@@ -83,7 +83,7 @@ public class PaginaPrincipal extends javax.swing.JFrame {
 
             },
             new String [] {
-                "Titulo", "Autor", "Edicion", "Paginas", "Precio"
+                "Title 1", "Title 2", "Title 3", "Title 4", "Title 5"
             }
         ));
         jScrollPane2.setViewportView(jTableLibros);
