@@ -18,11 +18,7 @@ public class Libro {
     private int precio;
 
     public Libro() {
-        this.nombre = "";
-        this.autor = "";
-        this.editorial = "";
-        this.paginas = 0;
-        this.precio = 0;
+      
     }
     
     public Libro(String nombre, String autor, String editorial, int paginas, int precio){
@@ -72,6 +68,8 @@ public class Libro {
     public void setPrecio(int precio) {
         this.precio = precio;
     }
+    
+    
     
     
     

@@ -5,18 +5,40 @@
  */
 package ventabook;
 
+import java.util.ArrayList;
+import javax.swing.table.DefaultTableModel;
+
 /**
  *
  * @author carlo
  */
 public class PaginaPrincipal extends javax.swing.JFrame {
+    
+    DefaultTableModel dtm = new DefaultTableModel();
+    ArrayList<Libro> libros = new ArrayList<Libro>();
 
     /**
      * Creates new form PaginaPrincipal
      */
     public PaginaPrincipal() {
         initComponents();
+        dtm = (DefaultTableModel)this.jTableLibros.getModel();
+        
+        
+        
+        Libro libro1 = new Libro("Harry Potter 1","J.K Rowlin","Salamandra",200,19990);
+        Libro libro2 = new Libro("Harry Potter 2","J.K Rowlin","Salamandra",200,29990);
+        Libro libro3 = new Libro("Harry Potte 3","J.K Rowlin","Salamandra",200,39990);
+        
+        libros.add(libro1);
+        libros.add(libro2);
+        libros.add(libro3);
+        
+        System.out.println("LIBROS DISPONIBLES");
+      
     }
+    
+    
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -27,25 +49,56 @@ public class PaginaPrincipal extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jButton1 = new javax.swing.JButton();
+        buttonGroup1 = new javax.swing.ButtonGroup();
+        jButtonBuscar = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
-        jTextField1 = new javax.swing.JTextField();
         jScrollPane1 = new javax.swing.JScrollPane();
-        jTextPane1 = new javax.swing.JTextPane();
+        jTextBuscar = new javax.swing.JTextPane();
+        jScrollPane2 = new javax.swing.JScrollPane();
+        jTableLibros = new javax.swing.JTable();
+        jLabel2 = new javax.swing.JLabel();
+        jRadioTitulo = new javax.swing.JRadioButton();
+        jRadioAutor = new javax.swing.JRadioButton();
+        jRadioGenero = new javax.swing.JRadioButton();
         jMenuBar1 = new javax.swing.JMenuBar();
         jMenu1 = new javax.swing.JMenu();
         jMenu2 = new javax.swing.JMenu();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        jButton1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Iconos/Iconos/aaaqa.png"))); // NOI18N
+        jButtonBuscar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Iconos/Iconos/aaaqa.png"))); // NOI18N
+        jButtonBuscar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonBuscarActionPerformed(evt);
+            }
+        });
 
         jLabel1.setFont(new java.awt.Font("Tahoma", 0, 36)); // NOI18N
         jLabel1.setText("Bienvenido a VentaBook");
 
-        jTextField1.setText("jTextField1");
+        jScrollPane1.setViewportView(jTextBuscar);
 
-        jScrollPane1.setViewportView(jTextPane1);
+        jTableLibros.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+
+            },
+            new String [] {
+                "Titulo", "Autor", "Edicion", "Paginas", "Precio"
+            }
+        ));
+        jScrollPane2.setViewportView(jTableLibros);
+
+        jLabel2.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        jLabel2.setText("Buscar por:");
+
+        buttonGroup1.add(jRadioTitulo);
+        jRadioTitulo.setText("Titulo");
+
+        buttonGroup1.add(jRadioAutor);
+        jRadioAutor.setText("Autor");
+
+        buttonGroup1.add(jRadioGenero);
+        jRadioGenero.setText("Genero");
 
         jMenu1.setText("File");
         jMenuBar1.add(jMenu1);
@@ -60,38 +113,86 @@ public class PaginaPrincipal extends javax.swing.JFrame {
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(232, 232, 232)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(jLabel1)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 366, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 48, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(259, Short.MAX_VALUE))
+                        .addGap(150, 150, 150)
+                        .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 101, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(13, 13, 13)
+                        .addComponent(jRadioTitulo)
+                        .addGap(18, 18, 18)
+                        .addComponent(jRadioAutor)
+                        .addGap(18, 18, 18)
+                        .addComponent(jRadioGenero))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(11, 11, 11)
+                        .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 692, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(170, 170, 170)
+                        .addComponent(jLabel1)))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addGap(0, 0, Short.MAX_VALUE)
-                .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(146, 146, 146))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 366, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jButtonBuscar, javax.swing.GroupLayout.PREFERRED_SIZE, 48, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(121, 121, 121))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+            .addGroup(layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jLabel1)
+                .addGap(27, 27, 27)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jRadioGenero)
+                    .addComponent(jRadioAutor)
+                    .addComponent(jRadioTitulo)
+                    .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(53, 53, 53)
-                        .addComponent(jLabel1)
-                        .addGap(56, 56, 56)
-                        .addComponent(jButton1))
+                        .addGap(4, 4, 4)
+                        .addComponent(jButtonBuscar))
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(165, 165, 165)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 186, Short.MAX_VALUE)
-                .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(104, 104, 104))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 60, Short.MAX_VALUE)
+                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 271, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap())
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void jButtonBuscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonBuscarActionPerformed
+        // TODO add your handling code here:
+        
+        
+        
+        String []objetos = new String[5];
+        
+        System.out.println("SE ACTIVA EL BOTON");
+        
+        for(Libro libro : libros){
+            
+            objetos[0]= libro.getNombre();
+            System.out.println("Libro "+libro.getNombre());
+            objetos[1]=libro.getAutor();
+            System.out.println("Autor: "+libro.getAutor());
+            objetos[2]=libro.getEditorial();
+            System.out.println("Editorial"+libro.getEditorial());
+            objetos[3]=""+libro.getPaginas();
+            System.out.println("Paginas: "+libro.getPaginas());
+            objetos[4]=""+libro.getPrecio();
+            System.out.println("Precio: "+libro.getPrecio());
+            
+            dtm.addRow(objetos);
+            
+            
+        }
+        
+        
+        
+    }//GEN-LAST:event_jButtonBuscarActionPerformed
 
     /**
      * @param args the command line arguments
@@ -129,13 +230,19 @@ public class PaginaPrincipal extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButton1;
+    private javax.swing.ButtonGroup buttonGroup1;
+    private javax.swing.JButton jButtonBuscar;
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
     private javax.swing.JMenu jMenu1;
     private javax.swing.JMenu jMenu2;
     private javax.swing.JMenuBar jMenuBar1;
+    private javax.swing.JRadioButton jRadioAutor;
+    private javax.swing.JRadioButton jRadioGenero;
+    private javax.swing.JRadioButton jRadioTitulo;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTextField jTextField1;
-    private javax.swing.JTextPane jTextPane1;
+    private javax.swing.JScrollPane jScrollPane2;
+    private javax.swing.JTable jTableLibros;
+    private javax.swing.JTextPane jTextBuscar;
     // End of variables declaration//GEN-END:variables
 }
