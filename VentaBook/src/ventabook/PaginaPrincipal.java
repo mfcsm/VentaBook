@@ -6,6 +6,7 @@
 package ventabook;
 
 import java.util.ArrayList;
+import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 
 /**
@@ -15,6 +16,7 @@ import javax.swing.table.DefaultTableModel;
 public class PaginaPrincipal extends javax.swing.JFrame {
     
     DefaultTableModel dtm = new DefaultTableModel();
+    DefaultTableModel dtmCarro = new DefaultTableModel();
     ArrayList<Libro> libros = new ArrayList<Libro>();
 
     /**
@@ -23,7 +25,7 @@ public class PaginaPrincipal extends javax.swing.JFrame {
     public PaginaPrincipal() {
         initComponents();
         dtm = (DefaultTableModel)this.jTableLibros.getModel();
-        
+        dtmCarro = (DefaultTableModel)this.jTableCarro.getModel();
         
         
         Libro libro1 = new Libro("Harry Potter 1","J.K Rowlin","Salamandra",200,19990);
@@ -62,10 +64,11 @@ public class PaginaPrincipal extends javax.swing.JFrame {
         jRadioTitulo = new javax.swing.JRadioButton();
         jRadioAutor = new javax.swing.JRadioButton();
         jRadioGenero = new javax.swing.JRadioButton();
-        jButton1 = new javax.swing.JButton();
+        jButtonAgregar = new javax.swing.JButton();
         jScrollPane4 = new javax.swing.JScrollPane();
-        jTable2 = new javax.swing.JTable();
-        jButton2 = new javax.swing.JButton();
+        jTableCarro = new javax.swing.JTable();
+        jButtonQuitar = new javax.swing.JButton();
+        jButton3 = new javax.swing.JButton();
         jMenuBar1 = new javax.swing.JMenuBar();
         jMenu1 = new javax.swing.JMenu();
         jMenu2 = new javax.swing.JMenu();
@@ -119,19 +122,31 @@ public class PaginaPrincipal extends javax.swing.JFrame {
         buttonGroup1.add(jRadioGenero);
         jRadioGenero.setText("Genero");
 
-        jButton1.setText("Agregar");
+        jButtonAgregar.setText("Agregar");
+        jButtonAgregar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonAgregarActionPerformed(evt);
+            }
+        });
 
-        jTable2.setModel(new javax.swing.table.DefaultTableModel(
+        jTableCarro.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
 
             },
             new String [] {
-                "Title 1", "Title 2", "Title 3", "Title 4"
+                "Titulo", "Autor", "Editorial", "Paginas", "Precio"
             }
         ));
-        jScrollPane4.setViewportView(jTable2);
+        jScrollPane4.setViewportView(jTableCarro);
 
-        jButton2.setText("Quitar");
+        jButtonQuitar.setText("Quitar");
+        jButtonQuitar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonQuitarActionPerformed(evt);
+            }
+        });
+
+        jButton3.setText("COMPRAR");
 
         jMenu1.setText("File");
         jMenuBar1.add(jMenu1);
@@ -145,6 +160,12 @@ public class PaginaPrincipal extends javax.swing.JFrame {
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addGap(0, 0, Short.MAX_VALUE)
+                .addComponent(jButtonQuitar)
+                .addGap(90, 90, 90)
+                .addComponent(jButtonAgregar)
+                .addGap(286, 286, 286))
             .addGroup(layout.createSequentialGroup()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
@@ -168,14 +189,11 @@ public class PaginaPrincipal extends javax.swing.JFrame {
                                 .addComponent(jRadioGenero))
                             .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 366, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGap(41, 41, 41)
-                        .addComponent(jButtonBuscar, javax.swing.GroupLayout.PREFERRED_SIZE, 48, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addComponent(jButtonBuscar, javax.swing.GroupLayout.PREFERRED_SIZE, 48, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(341, 341, 341)
+                        .addComponent(jButton3)))
                 .addContainerGap(60, Short.MAX_VALUE))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addGap(0, 0, Short.MAX_VALUE)
-                .addComponent(jButton2)
-                .addGap(90, 90, 90)
-                .addComponent(jButton1)
-                .addGap(286, 286, 286))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -200,11 +218,13 @@ public class PaginaPrincipal extends javax.swing.JFrame {
                 .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 110, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(jButton1, javax.swing.GroupLayout.DEFAULT_SIZE, 38, Short.MAX_VALUE)
-                    .addComponent(jButton2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addComponent(jButtonAgregar, javax.swing.GroupLayout.DEFAULT_SIZE, 38, Short.MAX_VALUE)
+                    .addComponent(jButtonQuitar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jScrollPane4, javax.swing.GroupLayout.PREFERRED_SIZE, 140, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(35, 35, 35))
+                .addComponent(jScrollPane4, javax.swing.GroupLayout.PREFERRED_SIZE, 87, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jButton3, javax.swing.GroupLayout.PREFERRED_SIZE, 47, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(32, 32, 32))
         );
 
         pack();
@@ -240,6 +260,40 @@ public class PaginaPrincipal extends javax.swing.JFrame {
         
         
     }//GEN-LAST:event_jButtonBuscarActionPerformed
+
+    private void jButtonAgregarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonAgregarActionPerformed
+        // TODO add your handling code here:
+        
+        int fsel = this.jTableLibros.getSelectedRow();
+        
+        String titulo,autor,editorial,paginas,precio;
+        
+        if(fsel == -1){
+              
+            JOptionPane.showMessageDialog(null,"Debe Seleccionar un libro","Advertencia",JOptionPane.WARNING_MESSAGE);
+            
+        }else{
+            
+            titulo = this.jTableLibros.getValueAt(fsel, 0).toString();
+            autor = this.jTableLibros.getValueAt(fsel, 1).toString();
+            editorial = this.jTableLibros.getValueAt(fsel, 2).toString();
+            paginas = this.jTableLibros.getValueAt(fsel, 3).toString();
+            precio = this.jTableLibros.getValueAt(fsel, 4).toString();
+            
+            String elementos[] = {titulo,autor,editorial,paginas,precio};
+            dtmCarro.addRow(elementos);
+            
+            
+        }
+        
+    }//GEN-LAST:event_jButtonAgregarActionPerformed
+
+    private void jButtonQuitarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonQuitarActionPerformed
+        // TODO add your handling code here:
+        int fsel = this.jTableCarro.getSelectedRow();
+        
+        dtmCarro.removeRow(fsel);
+    }//GEN-LAST:event_jButtonQuitarActionPerformed
 
     /**
      * @param args the command line arguments
@@ -278,9 +332,10 @@ public class PaginaPrincipal extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.ButtonGroup buttonGroup1;
-    private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton2;
+    private javax.swing.JButton jButton3;
+    private javax.swing.JButton jButtonAgregar;
     private javax.swing.JButton jButtonBuscar;
+    private javax.swing.JButton jButtonQuitar;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JMenu jMenu1;
@@ -294,7 +349,7 @@ public class PaginaPrincipal extends javax.swing.JFrame {
     private javax.swing.JScrollPane jScrollPane3;
     private javax.swing.JScrollPane jScrollPane4;
     private javax.swing.JTable jTable1;
-    private javax.swing.JTable jTable2;
+    private javax.swing.JTable jTableCarro;
     private javax.swing.JTable jTableLibros;
     private javax.swing.JTextPane jTextBuscar;
     // End of variables declaration//GEN-END:variables
