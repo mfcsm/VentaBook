@@ -290,6 +290,12 @@ public class PaginaPrincipal extends javax.swing.JFrame {
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
         // TODO add your handling code here:
         
+        // LIMPIAR TABLAaaa
+        for (int i = 0; i < dtm.getRowCount(); i++) {
+            dtm.removeRow(i);
+            i-=1;
+        }
+        
         String []objetos = new String[5];
         
         System.out.println("SE ACTIVA EL BOTON");
